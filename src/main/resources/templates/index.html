@@ -50,6 +50,30 @@
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
+<!-- Table -->
+<div style="margin-top:35px">
+    <label style="font-size:25px"><b>Nasze statki</b></label>
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>Nr Statku </th>
+            <th>Bandera </th>
+            <th>Nazwa Statku </th>
+            <th>Rok_budowy </th>
+            <th>Tonaż </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Statek : ${listSale}">
+            <td th:text="${Statek.nr_statku}">ID</td>
+            <td th:text="${Statek.bandera}">Item Name</td>
+            <td th:text="${Statek.nazwa_statkuu}">nazwisko</td>
+            <td th:text="${Statek.rok_budowy}">email</td>
+            <td th:text="${Statek.tonaz}">telefon</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 

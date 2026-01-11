@@ -33,6 +33,13 @@
                     <a class="nav-link" th:href="@{/index}">Strona główna</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user/orders.html}">Pokaż zamówienia</a>
+                </li>
+            </ul>
+
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="">Zalogowany jako <b style="color:lightskyblue; text-transform:capitalize"
@@ -67,6 +74,78 @@
         </div>
     </div>
 </div>
+
+<!-- Table -->
+<div style="margin-top:35px">
+    <label style="font-size:25px"><b>Dostępne statki</b></label>
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>Numer statku</th>
+            <th>Bandera</th>
+            <th>Nazwa Statku</th>
+            <th>Rok budowy</th>
+            <th>Tonaż</th>
+            <th>Operacje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sale : ${listStatek}" >
+            <form th:action="@{/update}" th:object="${Statek}" method="post">
+                <td><label>
+                    <input type="text" name="nr_statku" th:value="${statek.nr_statku}" readonly/>
+                </label></td>
+                <td><label>
+                    <input type="text" name="bandera" th:value="${statek.bandera}"/>
+                </label></td>
+                <td><label>
+                    <input type="text" name="nazwa_statku" th:value="${statek.nazwa_statku}" />
+                </label></td>
+                <td><label>
+                    <input type="text" name="rok_budowy" th:value="${statek.rok_budowy}" />
+                </label></td>
+                <td><label>
+                    <input type="text" name="tonaz" th:value="${statek.tonaz}" />
+                </label></td>
+                <td>
+                    <button class="btn btn-primary" type="submit">Zapisz</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-danger" th:href="@{'/delete/' + ${statek.nr_statku}}">Usuń</a>
+                </td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<form action="/" th:action="@{/save}" th:object="${Statek}" method="post">
+    <!-- Table -->
+    <table class = "table">
+        <tr>
+            <td>Numer statku</td>
+            <td><label>
+                <input type="text" size="10" class="narrow-font" th:field="*{nr_statku}">
+            </label></td>
+            <td>Bandera</td>
+            <td><label>
+                <input type="text" size="30" class="narrow-font" th:field="*{bandera}">
+            </label></td>
+            <td>Nazwa statku</td>
+            <td><label>
+                <input type="text" size="10" class="narrow-font" th:field="*{nazwa_statku}">
+            </label></td>
+            <td>Rok budowy</td>
+            <td><label>
+                <input type="text" size="10" class="narrow-font" th:field="*{rok_budowy}">
+            </label></td>
+            <td>Tonaż</td>
+            <td><label>
+                <input type="text" size="10" class="narrow-font" th:field="*{tonaz}">
+            </label></td>
+            <td colspan = "2"><button class="btn btn-primary" type="submit">Dodaj</button></td>
+        </tr>
+    </table>
+</form>
 
 
 

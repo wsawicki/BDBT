@@ -32,6 +32,14 @@
                     <a class="nav-link" th:href="@{/index}">Strona główna</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/user_orders}">Twoje zamówienia</a>
+                </li>
+            </ul>
+
+
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="">Zalogowany jako <b style="color:lightskyblue; text-transform:capitalize"
@@ -44,6 +52,7 @@
                     <a class="nav-link" href="javascript:document.LogoutForm.submit()">Wyloguj się</a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>
@@ -66,5 +75,8 @@
         </div>
     </div>
 </div>
+
+
+
 </body>
 </html>

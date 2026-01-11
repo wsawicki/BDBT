@@ -26,6 +26,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/admin_main").hasRole("ADMIN")
                         .requestMatchers("/user_main").hasRole("USER")
+                        .requestMatchers("/all_orders").hasRole("ADMIN")
+                        .requestMatchers("/user_oredrs").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
