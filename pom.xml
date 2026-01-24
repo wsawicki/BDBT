@@ -105,17 +105,17 @@
         </dependency>
         <!-- New adding end -->
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
-    <!-- Oracle JDBC driver -->
-    <dependency>
-        <groupId>com.oracle</groupId>
-        <artifactId>ojdbc17</artifactId>
-        <version>1.0</version>
-        <scope>system</scope>
-        <systemPath>C:/JDBC/ojdbc17.jar</systemPath>
-    </dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <!-- Oracle JDBC driver -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc17</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/jakub/Poltechnika_Warszawska/SEM3/BDBT/ojdbc17.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>

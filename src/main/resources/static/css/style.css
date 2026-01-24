@@ -1,8 +1,286 @@
-.imageBackground{
-    background-image: url('../assets/img/PW_logo.png');
-    background-size: 400px;
-    background-repeat: no-repeat;
+/* =========================================
+   MASTERPIECE MARINE THEME - DARK EDITION
+   Colors:
+   #1D3557 (Deep Sea)
+   #457B9D (Ocean Surface)
+   #A8DADC (Sea Foam)
+   #F1FAEE (Iceberg White)
+   #E63946 (Coral Red)
+   ========================================= */
+
+:root {
+    --bg-deep: #1D3557;
+    --bg-darker: #102035;
+    --primary: #457B9D;
+    --accent: #A8DADC;
+    --light: #F1FAEE;
+    --danger: #E63946;
+    --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --glass: rgba(29, 53, 87, 0.85);
+}
+
+/* --- ANIMACJE WEJŚCIA --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-darker) 100%);
+    background-attachment: fixed; /* Tło stoi w miejscu przy przewijaniu */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--light);
+    min-height: 100vh;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* --- STYLOWANIE PASKA PRZEWIJANIA (Webkit) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* --- NAWIGACJA (GLASSMORPHISM) --- */
+.navbar-custom {
+    background: rgba(29, 53, 87, 0.7) !important; /* Półprzezroczystość */
+    backdrop-filter: blur(12px); /* Efekt rozmycia tła pod spodem */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(168, 218, 220, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--accent) !important;
+    text-shadow: none; /* Dla pewności, że nic nie świeci */
+}
+
+.navbar-custom .nav-link {
+    color: rgba(241, 250, 238, 0.8) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 8px 15px !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--bg-deep) !important;
+    background-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+/* --- KARTY (PŁYWAJĄCE KONTENERY) --- */
+.card-custom {
+    background-color: rgba(241, 250, 238, 0.95); /* Prawie białe, lekko szkliste */
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px); /* Lekkie uniesienie karty */
+}
+
+/* Nowoczesny nagłówek karty z gradientem */
+.card-header-custom {
+    background: linear-gradient(90deg, var(--bg-deep) 0%, var(--primary) 100%);
+    color: white;
+    font-weight: 700;
+    padding: 1.2rem 1.5rem;
+    border-bottom: none;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- TABELE "FLOATING ROWS" (EFEKT WOW) --- */
+.table-responsive {
+    padding: 1rem; /* Margines dla cieni */
+}
+
+.table-custom {
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Odstęp między wierszami */
+    background-color: transparent;
+    width: 100%;
+}
+
+.table-custom thead th {
+    background-color: transparent;
+    color: var(--bg-deep);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 10px 15px;
+    border: none;
+    letter-spacing: 1px;
+}
+
+/* Stylizacja wierszy jako osobnych kafelków */
+.table-custom tbody tr {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Zaokrąglenie rogów pierwszego i ostatniego elementu w wierszu */
+.table-custom tbody tr td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+.table-custom tbody tr td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+.table-custom td {
+    border: none;
+    padding: 15px;
+    vertical-align: middle;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Hover na wiersz - mocne podświetlenie */
+.table-custom tbody tr:hover {
+    background-color: #fff;
+    transform: scale(1.01); /* Powiększenie */
+    box-shadow: 0 5px 15px rgba(69, 123, 157, 0.2); /* Niebieski cień */
+    border-left: 5px solid var(--danger); /* Czerwony akcent z lewej */
+}
+/* Korekta border-radius przy hoverze */
+.table-custom tbody tr:hover td:first-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+
+
+/* --- INPUTY W TABELACH (Admin Panel) --- */
+.table-custom input.form-control {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: var(--bg-deep);
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.table-custom input.form-control:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(69, 123, 157, 0.15);
+}
+
+/* --- PRZYCISKI (NEON GLOW) --- */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Główny niebieski przycisk */
+.btn-success, .btn-primary, .btn-primary-custom {
+    background: linear-gradient(135deg, var(--primary) 0%, #2a5275 100%) !important;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-success:hover, .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(69, 123, 157, 0.5); /* Świecenie */
+    filter: brightness(1.1);
+}
+
+/* Czerwony przycisk (Kosz) */
+.btn-danger, .btn-outline-danger {
+    background: linear-gradient(135deg, var(--danger) 0%, #a61e2c 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(230, 57, 70, 0.4);
+}
+
+/* --- STOPKA --- */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    color: rgba(168, 218, 220, 0.6);
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+/* --- HERO SECTION (Nagłówek strony głównej) --- */
+.hero-section {
+    /* Tło z gradientem i zdjęciem */
+    background: linear-gradient(rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.7)), url('https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
     background-position: center;
-    width: 600px;
-    height: 600px;
+
+    /* Flexbox do idealnego centrowania */
+    display: flex;
+    flex-direction: column; /* Układaj elementy jeden pod drugim */
+    justify-content: center; /* Centrowanie w pionie */
+    align-items: center;     /* Centrowanie w poziomie */
+    text-align: center;      /* Centrowanie tekstu wewnątrz */
+
+    padding: 120px 20px;     /* Odstępy góra/dół */
+    margin-bottom: 40px;
+    border-radius: 0 0 30px 30px; /* Zaokrąglenie tylko na dole */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.hero-section h1 {
+    font-weight: 800;
+    font-size: 3.5rem;
+    color: var(--light);
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    color: var(--accent); /* Kolor miętowy/turkusowy */
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Nowy styl przycisku w Hero */
+.btn-hero {
+    background-color: var(--accent); /* Jasny turkus */
+    color: var(--bg-deep); /* Ciemny granat tekstu dla kontrastu */
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px; /* Zaokrąglony kształt (pastylka) */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(168, 218, 220, 0.4); /* Poświata */
+    border: 2px solid var(--accent);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-hero:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
